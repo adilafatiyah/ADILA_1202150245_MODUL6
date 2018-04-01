@@ -23,34 +23,34 @@ import java.util.ArrayList;
 
 public class BerandaActivity extends AppCompatActivity {
     GridView grid; //digunakan untuk GridView grid;
-    FirebaseStorage storage; //digunakan untuk
-    StorageReference storageReference;//digunakan untuk
-    String nama[] = {"ini", "itu"};//digunakan untuk
-    ArrayList<Uri> gam = new ArrayList<>();//digunakan untuk
-    ArrayList<String> judul = new ArrayList<>();//digunakan untuk
+    FirebaseStorage storage; //digunakan untuk FirebaseStorage storage;
+    StorageReference storageReference;//digunakan untuk StorageReference storageReference;
+    String nama[] = {"ini", "itu"};//digunakan untuk String nama[] = {"ini", "itu"};
+    ArrayList<Uri> gam = new ArrayList<>();//digunakan untuk  ArrayList<Uri> gam = new ArrayList<>();
+    ArrayList<String> judul = new ArrayList<>();//digunakan untuk ArrayList<String> judul = new ArrayList<>();
     ArrayList<String> post = new ArrayList<>();//digunakan untuk
     //List<ImageUploadInfo> list = new ArrayList<>();
 
     //int gambar[] = {R.drawable.ic_3d_rotation, R.drawable.ic_accessibility};
-    DatabaseReference databaseReference;//digunakan untuk
-    public static final String Database_Path = "POST";//digunakan untuk
-    public static final String file_Path = "images/";//digunakan untuk
+    DatabaseReference databaseReference;//digunakan untuk  DatabaseReference databaseReference;
+    public static final String Database_Path = "POST";//digunakan untuk  public static final String Database_Path = "POST";
+    public static final String file_Path = "images/";//digunakan untuk public static final String file_Path = "images/";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//digunakan untuk
-        super.onCreate(savedInstanceState);//digunakan untuk
-        setContentView(R.layout.activity_beranda);//digunakan untuk
+    protected void onCreate(Bundle savedInstanceState) {//digunakan untuk  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);//digunakan  untuk  super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_beranda);//digunakan untuk setContentView(R.layout.activity_beranda);
 
 
-        get_data();//digunakan untuk
+        get_data();//digunakan untuk   get_data();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.tombolFAB);//digunakan untuk
-        fab.setOnClickListener(new View.OnClickListener() {//digunakan untuk
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.tombolFAB);//digunakan untuk FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.tombolFAB);
+        fab.setOnClickListener(new View.OnClickListener() {//digunakan untuk fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {//digunakan untuk
+            public void onClick(View view) {//digunakan untuk public void onClick(View view) {
                 // Click action
-                Intent intent = new Intent(BerandaActivity.this, InputActivity.class);//digunakan untuk
-                startActivity(intent);//digunakan untuk
+                Intent intent = new Intent(BerandaActivity.this, InputActivity.class);//digunakan untuk Intent intent = new Intent(BerandaActivity.this, InputActivity.class);
+                startActivity(intent);//digunakan untuk startActivity(intent);
             }
         });//digunakan untuk
 
@@ -58,34 +58,34 @@ public class BerandaActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {//digunakan untuk
-        super.onStart();//digunakan untuk
+    protected void onStart() {//digunakan untuk protected void onStart() {
+        super.onStart();//digunakan untuk super.onStart();
 
 
     }//digunakan untuk
 
-    void get_data() {//digunakan untuk
-        databaseReference = FirebaseDatabase.getInstance().getReference(BerandaActivity.Database_Path);//digunakan untuk
-        databaseReference.addValueEventListener(new ValueEventListener() {//digunakan untuk
+    void get_data() {//digunakan untuk void get_data() {
+        databaseReference = FirebaseDatabase.getInstance().getReference(BerandaActivity.Database_Path);//digunakan untuk databaseReference = FirebaseDatabase.getInstance().getReference(BerandaActivity.Database_Path);
+        databaseReference.addValueEventListener(new ValueEventListener() {//digunakan untuk  databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {//digunakan untuk
+            public void onDataChange(DataSnapshot snapshot) {//digunakan untuk public void onDataChange(DataSnapshot snapshot) {
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {//digunakan untuk
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {//digunakan untuk  for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    String jdl = dataSnapshot.child("judul").getValue().toString();//digunakan untuk
-                    String pst = dataSnapshot.child("post").getValue().toString();//digunakan untuk
-                    judul.add(jdl);//digunakan untuk
-                    post.add(pst);//digunakan untuk
-                    Log.d("ini adalah judul", jdl);//digunakan untuk
+                    String jdl = dataSnapshot.child("judul").getValue().toString();//digunakan untuk String jdl = dataSnapshot.child("judul").getValue().toString();
+                    String pst = dataSnapshot.child("post").getValue().toString();//digunakan untuk String pst = dataSnapshot.child("post").getValue().toString();
+                    judul.add(jdl);//digunakan untuk judul.add(jdl);
+                    post.add(pst);//digunakan untuk post.add(pst);
+                    Log.d("ini adalah judul", jdl);//digunakan untuk Log.d("ini adalah judul", jdl);
                 }
-                getFoto();//digunakan untuk
-                grid();//digunakan untuk
+                getFoto();//digunakan untuk getFoto();
+                grid();//digunakan untuk grid();
 
 
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {//digunakan untuk
+            public void onCancelled(DatabaseError databaseError) {//digunakan untuk public void onCancelled(DatabaseError databaseError) {
 
             }
         }
@@ -93,16 +93,16 @@ public class BerandaActivity extends AppCompatActivity {
         );
     }
 
-    void grid() {//digunakan untuk
-        gridadaptor adapter = new gridadaptor(BerandaActivity.this, judul, post, gam);//digunakan untuk
-        grid = (GridView) findViewById(R.id.grid);//digunakan untuk
-        grid.setAdapter(adapter);//digunakan untuk
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {//digunakan untuk
+    void grid() {//digunakan untuk void grid() {
+        gridadaptor adapter = new gridadaptor(BerandaActivity.this, judul, post, gam);//digunakan untuk gridadaptor adapter = new gridadaptor(BerandaActivity.this, judul, post, gam);
+        grid = (GridView) findViewById(R.id.grid);//digunakan untuk grid = (GridView) findViewById(R.id.grid);
+        grid.setAdapter(adapter);//digunakan untuk  grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {//digunakan untuk grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,//digunakan untuk
-                                    int position, long id) {//digunakan untuk
-                Toast.makeText(BerandaActivity.this, "You Clicked at " + judul.get(position), Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View view,//digunakan untuk public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {//digunakan untuk  int position, long id) {
+                Toast.makeText(BerandaActivity.this, "You Clicked at " + judul.get(position), Toast.LENGTH_SHORT).show();// digunakan untuk  Toast.makeText(BerandaActivity.this, "You Clicked at " + judul.get(position), Toast.LENGTH_SHORT).show();
 //digunakan untuk
             }
         });
@@ -127,13 +127,13 @@ public class BerandaActivity extends AppCompatActivity {
             }
         });
     */
-        storage = FirebaseStorage.getInstance();//digunakan untuk
-        storageReference = storage.getReference();//digunakan untuk
-        StorageReference ref = storageReference.child("images/");//digunakan untuk
-        ref.getFile(Uri.parse("gs://modul6-6f5bd.appspot.com/images"));//digunakan untuk
+        storage = FirebaseStorage.getInstance();//digunakan untuk  storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();//digunakan untuk storageReference = storage.getReference();
+        StorageReference ref = storageReference.child("images/");//digunakan untuk StorageReference ref = storageReference.child("images/");
+        ref.getFile(Uri.parse("gs://modul6-6f5bd.appspot.com/images"));//digunakan untuk  ref.getFile(Uri.parse("gs://modul6-6f5bd.appspot.com/images"));/
 
-        Log.d("ini anama file ", ref.getName());//digunakan untuk
-        Log.d("ini adalah peth ", ref.getPath());//digunakan untuk
+        Log.d("ini anama file ", ref.getName());//digunakan untuk  Log.d("ini anama file ", ref.getName());
+        Log.d("ini adalah peth ", ref.getPath());//digunakan untuk  Log.d("ini adalah peth ", ref.getPath());
 
     }
 }
